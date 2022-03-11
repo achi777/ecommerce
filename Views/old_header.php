@@ -64,6 +64,8 @@
         <div class="col-lg-4 col-md-4 col-12">
           <div class="top-middle">
             <!--TOP Center-->
+            <p>test</p>
+            <!--/TOP Center-->
           </div>
         </div>
         <div class="col-lg-4 col-md-4 col-12" style="background-color: #f9f9f9!important;">
