@@ -97,8 +97,26 @@
   .bg-light {
     background-color: #ffffff !important;
     -moz-box-shadow: 0 0 0px black;
-    -webkit-box-shadow: 0 0 0px black; 
-     box-shadow: 0 0 0px black; 
+    -webkit-box-shadow: 0 0 0px black;
+    box-shadow: 0 0 0px black;
+  }
+
+  .header .mega-category-menu .sub-category {
+    position: absolute;
+    left: 0;
+    top: 0!important;
+    width: 241px;
+    height: auto;
+    /* border: 1px solid #eee; */
+    border-right: 1px solid #eee;
+    background-color: #fff;
+    opacity: 100; 
+    visibility: visible;
+    border-radius: 0;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    padding: 15px 0;
+    z-index: 999;
 }
 </style>
 <div class="preloader">
@@ -141,7 +159,7 @@
         <div class="col-lg-4 col-md-4 col-12">
           <div class="top-middle">
             <!--TOP Center-->
-            <p>Free Shipping on ₾ 100+ Orders</p>
+
             <!--/TOP Center-->
           </div>
         </div>
@@ -193,66 +211,62 @@
         <div class="col-lg-7 col-md-7 d-xs-none">
           <!--center-->
           <!-- ============= COMPONENT ============== -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="main_nav">
-            <div class="navbar-nav">
-            <@$j = 0;@>
-            <@foreach($catalog AS $item):@>
-              <div class="nav-item dropdown has-megamenu">
-                <a class=nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> {{$item->{cat_name} }} </a>
-                <div class="dropdown-menu megamenu" role="menu">
-                  <div class="row g-3">
-                    <div class="col-lg-3 col-6">
-                      <div class="col-megamenu">
-                        <div class="mega-category-menu">
-                          <span class="cat-button"> <i class="lni lni-menu"></i>All Categories </span>
-                          {{$menus[$j]->menu}}
-                          <@$j++;@>
-                        </div>
-                      </div> <!-- col-megamenu.// -->
-                    </div><!-- end col-3 -->
-                    <div class="col-lg-3 col-12">
-                      <div class="col-megamenu">
-                        <h6 class="title">Title Menu Two</h6>
-                        <ul class="list-unstyled">
-                          <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
-                          <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
-                          <li><a href="#"><i class="fas fa-caret-right pe-2"></i> Menu</a></li>
-                          <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
-                          <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
-                          <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
-                        </ul>
-                      </div> <!-- col-megamenu.// -->
-                    </div><!-- end col-3 -->
-                    <div class="col-lg-3 col-6">
-                      <div class="col-megamenu">
-                        <h6 class="title">Title Menu Three</h6>
-                        <ul class="list-unstyled">
-                          <li><a href="#">Custom Menu</a></li>
-                          <li><a href="#">Custom Menu</a></li>
-                          <li><a href="#">Custom Menu</a></li>
-                          <li><a href="#">Custom Menu</a></li>
-                          <li><a href="#">Custom Menu</a></li>
-                          <li><a href="#">Custom Menu</a></li>
-                        </ul>
-                      </div> <!-- col-megamenu.// -->
-                    </div>
-                    <!-- end col-3 -->
-                  </div><!-- end row -->
-                </div> <!-- dropdown-mega-menu.// -->
-              </div>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="main_nav">
+                <div class="navbar-nav">
+                  <@$j=0;@>
+                    <@foreach($catalog AS $item):@>
+                      <div class="nav-item dropdown has-megamenu">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> {{$item->{cat_name} }} </a>
+                        <div class="dropdown-menu megamenu" role="menu">
+                          <div class="row g-3">
+                            <div class="col-lg-4 col-6">
+                              <div class="col-megamenu">
+                                <div class="mega-category-menu">
+                                  
+                                  {{$menus[$j]->menu}}
+                                  <@$j++;@>
+                                </div>
+                              </div> <!-- col-megamenu.// -->
+                            </div><!-- end col-3 -->
+                            <div class="col-lg-5 col-12">
+                              <div class="col-megamenu">
+                                <h6 class="title">{{$item->{cat_name} }} clothes</h6>
+                                <ul class="list-unstyled">
+                                  <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
+                                  <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
+                                  <li><a href="#"><i class="fas fa-caret-right pe-2"></i> Menu</a></li>
+                                  <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
+                                  <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
+                                  <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
+                                </ul>
+                              </div> <!-- col-megamenu.// -->
+                            </div><!-- end col-3 -->
+                            <div class="col-lg-3 col-6">
+                              <div class="col-megamenu">
+                                <h6 class="title">shop by size</h6>
+                                <@foreach($sizes AS $itemc):@>
+                                <button type="button" onclick="location.href='{{baseurl}}/shop/{{$item->cat_id}}/x/{{$itemc->size_id}}/x/x/1/x/'" class="btn btn-light" style="margin-top: 10px;">{{$itemc->size_name}}</button>
+                                <@endforeach@>
 
-              <@endforeach@>
-              
-            </div>
-          </div> <!-- navbar-collapse.// -->
-        </div> <!-- container-fluid.// -->
-      </nav>
-      <!-- ============= COMPONENT END// ============== -->
+                              </div> <!-- col-megamenu.// -->
+                            </div>
+                            <!-- end col-3 -->
+                          </div><!-- end row -->
+                        </div> <!-- dropdown-mega-menu.// -->
+                      </div>
+
+                      <@endforeach@>
+
+                </div>
+              </div> <!-- navbar-collapse.// -->
+            </div> <!-- container-fluid.// -->
+          </nav>
+          <!-- ============= COMPONENT END// ============== -->
 
         </div>
         <div class="col-lg-3 col-md-3 col-5">

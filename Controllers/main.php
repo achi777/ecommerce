@@ -37,6 +37,7 @@ class Controller extends init
         $data['tree'] = $this->model->product_tree();
         $data['infoCats'] = $this->infoModel->postCats();
         $data['lastPosts'] = $this->infoModel->lastPost();
+        $data['sizes'] = $this->model->sizes();
         //var_dump($data['specialOffer']);
         //easy::out($data['infoCats']);
         //easy::out($data['catalog']);
