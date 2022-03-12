@@ -43,6 +43,15 @@ class Controller extends init
        // $data['randomPost'] = $this->model->randomPost();
        // $data['postList'] = $this->model->postList();
        // $data['pagination'] = $this->model->pagination();
+       $catalog = json_decode($data['catalog']);
+       $menus[] = new stdClass;
+       $j = 0;
+       foreach($catalog AS $item){
+            @$menus[$j]->menu = @$this->model->productTreeByID($item->cat_id);
+            $j++;
+       }
+       //var_dump($menus);
+       $data['menus'] = json_encode($menus);
         /******************************************/
         $this->load->template_start($header_data);
         /******************************************/

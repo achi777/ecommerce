@@ -993,12 +993,12 @@ class orm
 
     }
 
-    public function menu_tree()
+    public function menu_tree($catID = 0)
     {
 
         $result = treeStartTag;
 
-        $result .= $this->get_menu_tree(0);
+        $result .= $this->get_menu_tree($catID);
 
         $result .= treeEndTag;
 
@@ -1043,7 +1043,7 @@ class orm
 
         }
 
-
+        //echo $this->queryStr . " FROM " . $this->table . " " . $this->joinStr . " " . $where . " " . $ordering;
         $result = $this->mysqli->query($this->queryStr . " FROM " . $this->table . " " . $this->joinStr . " " . $where . " " . $ordering);
 
 
@@ -1052,9 +1052,7 @@ class orm
             if (!empty($row)) {
 
                 if ($this->tree_check_parents($row->{$this->treeCatID}) == true) {
-
                     $menu .= treeMenuDropStartTag . "<a href='" . baseurl . $this->treeUrl . $row->{$this->treeCatID} . "/'>" . treeMenuIcon . $row->{$this->treeName} . "</a>";
-
                     $menu .= treeSubmenuStartTag . self::get_menu_tree($row->{$this->treeCatID}) . treeSubmenuEndTag; //call  recursively
 
                 } else {
@@ -1132,7 +1130,6 @@ class orm
 
 
         $result = $this->mysqli->query($this->queryStr . " FROM " . $this->table . " " . $this->joinStr . " " . $where . " " . $ordering);
-
 
         while ($row = $result->fetch_object()) {
 

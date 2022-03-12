@@ -638,6 +638,19 @@ class Model extends init
         return $result;
     }
 
+    public function productTreeByID($catID)
+    {
+        $this->db->select("*");
+        $this->db->from("product_cat");
+        $this->db->where("product_cat.cat_status", 1);
+        $this->db->treeCatID = "cat_id";
+        $this->db->treeParentID = "cat_parent_id";
+        $this->db->treeName = cat_name;
+        $this->db->treeUrl = "/shop/";
+        $result = $this->db->menu_tree($catID);
+        return $result;
+    }
+
     /* Shopping Cart */
     public function checkCart($userID)
     {
