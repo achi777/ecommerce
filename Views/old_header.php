@@ -167,14 +167,20 @@
           <!--profile-->
           <@if($_SESSION['userID']> 0):@>
             <div class="top-end">
-              <div class="user">
-                <a href="{{baseurl}}/profile"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile </a>
-              </div>
-              <ul class="user-login">
-                <li>
-                  <a href="{{baseurl}}/logout">Logout</a>
-                </li>
-              </ul>
+            <ul class="user-login">
+                  <li>
+                    <a href="{{baseurl}}/profile"> <img src="{{baseurl}}/assets/icons/icons/user.jpg"> {{profile}}</a>
+                  </li>
+                  <li>
+                    <a href="{{baseurl}}/wishlist"> <img src="{{baseurl}}/assets/icons/icons/wishlist.jpg"> Hearts</a>
+                  </li>
+                  <li>
+                    <a href="{{baseurl}}/orders"> <img src="{{baseurl}}/assets/icons/icons/orders.jpg"> {{orders}}</a>
+                  </li>
+                  <li>
+                    <a href="{{baseurl}}/cart"> <img src="{{baseurl}}/assets/icons/icons/cart-empty.jpg"> {{cart}}</a>
+                  </li>
+                </ul>
             </div>
             <@else:@>
               <div class="top-end">
@@ -233,17 +239,10 @@
                                 </div>
                               </div> <!-- col-megamenu.// -->
                             </div><!-- end col-3 -->
-                            <div class="col-lg-5 col-12">
+                            <div class="col-lg-5 col-12" style="min-height: 600px;">
                               <div class="col-megamenu">
                                 <h6 class="title">{{$item->{cat_name} }} clothes</h6>
-                                <ul class="list-unstyled">
-                                  <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
-                                  <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
-                                  <li><a href="#"><i class="fas fa-caret-right pe-2"></i> Menu</a></li>
-                                  <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
-                                  <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
-                                  <li><a href="#"><i class="fas fa-caret-right pe-2"></i>Custom Menu</a></li>
-                                </ul>
+                                  <div>test</div>
                               </div> <!-- col-megamenu.// -->
                             </div><!-- end col-3 -->
                             <div class="col-lg-3 col-6">
@@ -294,6 +293,7 @@
   </div>
   <div class="container">
     <div class="row align-items-center">
+      <div style="background-color:#f9f9f9; min-height:20px; border-bottom: 2px solid #0267f3;" class="w-100"></div>
       <!--<div class="col-lg-8 col-md-6 col-12">
         <div class="nav-inner">
           <div class="mega-category-menu">
