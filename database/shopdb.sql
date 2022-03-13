@@ -11,7 +11,7 @@
  Target Server Version : 100316
  File Encoding         : 65001
 
- Date: 07/03/2022 23:26:02
+ Date: 13/03/2022 10:59:28
 */
 
 SET NAMES utf8mb4;
@@ -46,7 +46,7 @@ CREATE TABLE `brands` (
   `brand_logo` varchar(255) DEFAULT NULL,
   `cat_status` int(11) DEFAULT 1,
   PRIMARY KEY (`brand_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of brands
@@ -56,6 +56,7 @@ INSERT INTO `brands` VALUES (1, 'Prada', '03.png', 1);
 INSERT INTO `brands` VALUES (2, 'Armani', '01.png', 1);
 INSERT INTO `brands` VALUES (3, 'Hermes', '02.png', 1);
 INSERT INTO `brands` VALUES (4, 'Zarra', '04.png', 1);
+INSERT INTO `brands` VALUES (10, 'test', '5b430038-1bf9-4e13-b0b7-5311bd560ce3.jpg', 1);
 COMMIT;
 
 -- ----------------------------
@@ -99,6 +100,29 @@ INSERT INTO `combo_list` VALUES (3, 87, '1ad331bc-355a-43cb-ae9d-dea633ffd645');
 INSERT INTO `combo_list` VALUES (8, 92, '1ad331bc-355a-43cb-ae9d-dea633ffd645');
 INSERT INTO `combo_list` VALUES (9, 93, '1ad331bc-355a-43cb-ae9d-dea633ffd645');
 INSERT INTO `combo_list` VALUES (10, 94, '1ad331bc-355a-43cb-ae9d-dea633ffd645');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for contact
+-- ----------------------------
+DROP TABLE IF EXISTS `contact`;
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `address` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `fb` varchar(255) DEFAULT NULL,
+  `twitter` varchar(255) DEFAULT NULL,
+  `instagram` varchar(255) DEFAULT NULL,
+  `youtube` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of contact
+-- ----------------------------
+BEGIN;
+INSERT INTO `contact` VALUES (1, 'Tbilisi, Rustavelis 42', '+995 577 211 625', 'contact@dressio.ge', 'http://fb.com/dreesio.ge', 'https://twitter.com/dressio.ge', 'https://www.instagram.com/dressio.ge/', 'https://youtube.com/dressio.ge');
 COMMIT;
 
 -- ----------------------------
@@ -235,7 +259,7 @@ CREATE TABLE `orders` (
   `product_sale` float DEFAULT NULL,
   `shipping_company_id` int(11) DEFAULT NULL,
   `order_code` varchar(255) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT 0,
   `cupon_code` varchar(255) DEFAULT NULL,
   `tracking_code` varchar(255) DEFAULT NULL,
   `order_date` datetime DEFAULT NULL,
@@ -245,18 +269,21 @@ CREATE TABLE `orders` (
   `size_name` varchar(255) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
+  `payment_hash` varchar(255) DEFAULT NULL,
+  `payment_status` int(11) DEFAULT 0,
   PRIMARY KEY (`order_id`) USING BTREE,
   KEY `order_code` (`order_code`,`user_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
 BEGIN;
-INSERT INTO `orders` VALUES (10, 1, 86, 16, 'ჯინსი', 'jeans', 'джинсы', 507, 12, 123123, 'fdfaa511-36ca-48dc-a0ac-abb269b0825d', '1', '123321', 'abc123zxc', '2022-02-28 19:03:47', 'ლურჯი', 'BLUE', 'синий', 'XL', 1, 'product-1.jpg');
-INSERT INTO `orders` VALUES (11, 1, 86, 19, 'ჯინსი', 'jeans', 'джинсы', 507, 12, 123123, 'fdfaa511-36ca-48dc-a0ac-abb269b0825d', '1', '123321', 'abc123zxc', '2022-02-28 19:03:47', 'წითელი', 'RED', 'красный', 'M', 1, 'product-1.jpg');
-INSERT INTO `orders` VALUES (12, 1, 86, 16, 'ჯინსი', 'jeans', 'джинсы', 507, 12, 123123, 'b9ff7c61-6398-4371-aea8-63d4fbec4cbe', '1', '123321', 'abc123zxc', '2022-03-05 17:57:41', 'ლურჯი', 'BLUE', 'синий', 'XL', 1, 'product-1.jpg');
-INSERT INTO `orders` VALUES (13, 1, 86, 16, 'ჯინსი', 'jeans', 'джинсы', 507, 12, 123123, '3f63386d-c6b0-4a75-9ff0-1801e0f1d8ac', '1', '123321', 'abc123zxc', '2022-03-05 18:00:51', 'ლურჯი', 'BLUE', 'синий', 'XL', 1, 'product-1.jpg');
+INSERT INTO `orders` VALUES (10, 1, 86, 16, 'ჯინსი', 'jeans', 'джинсы', 507, 12, 123123, 'fdfaa511-36ca-48dc-a0ac-abb269b0825d', 1, '123321', 'abc123zxc', '2022-02-28 19:03:47', 'ლურჯი', 'BLUE', 'синий', 'XL', 1, 'product-1.jpg', NULL, 0);
+INSERT INTO `orders` VALUES (11, 1, 86, 19, 'ჯინსი', 'jeans', 'джинсы', 507, 12, 123123, 'fdfaa511-36ca-48dc-a0ac-abb269b0825d', 1, '123321', 'abc123zxc', '2022-02-28 19:03:47', 'წითელი', 'RED', 'красный', 'M', 1, 'product-1.jpg', NULL, 0);
+INSERT INTO `orders` VALUES (12, 1, 86, 16, 'ჯინსი', 'jeans', 'джинсы', 507, 12, 123123, 'b9ff7c61-6398-4371-aea8-63d4fbec4cbe', 1, '123321', 'abc123zxc', '2022-03-05 17:57:41', 'ლურჯი', 'BLUE', 'синий', 'XL', 1, 'product-1.jpg', NULL, 0);
+INSERT INTO `orders` VALUES (13, 1, 86, 16, 'ჯინსი', 'jeans', 'джинсы', 507, 12, 123123, '3f63386d-c6b0-4a75-9ff0-1801e0f1d8ac', 1, '123321', 'abc123zxc', '2022-03-05 18:00:51', 'ლურჯი', 'BLUE', 'синий', 'XL', 1, 'product-1.jpg', NULL, 0);
+INSERT INTO `orders` VALUES (16, 1, 86, 16, 'ჯინსი', 'jeans', 'джинсы', 507, 12, 123123, '273bc967-5405-44c8-99be-65d1e1765f2f', 1, '123321', 'abc123zxc', '2022-03-10 12:36:39', 'ლურჯი', 'BLUE', 'синий', 'XL', 1, 'product-1.jpg', '8999e6bc35e21f89d9e7c5a1fea4a896203f4275', 0);
 COMMIT;
 
 -- ----------------------------
@@ -272,7 +299,7 @@ CREATE TABLE `payments` (
   `status` int(11) DEFAULT 0,
   `payment_date` datetime DEFAULT NULL,
   PRIMARY KEY (`payment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of payments
@@ -288,6 +315,15 @@ INSERT INTO `payments` VALUES (7, 'fea2179fce5f74608fb4f7035245c00ebea08359', '0
 INSERT INTO `payments` VALUES (8, '3dd29aab6851ec254d0f7aa815c5acaf4d405156', 'f90c77289e25619d139e891109d6982be91e5de6', 1, 250, 0, '2022-03-06 20:39:15');
 INSERT INTO `payments` VALUES (9, '87c27930832548f31d76b83ee3927dca859364ab', 'bfb969c54e2a569c98887fb6bf9406cfc33a13ab', 1, 250, 0, '2022-03-07 10:56:30');
 INSERT INTO `payments` VALUES (10, '3037ab09866e7ea2101303c74f51015c837c595e', 'a97713e2b7c4fb6871bc03ccbd8b9c862f843c36', 1, 250, 0, '2022-03-07 13:02:42');
+INSERT INTO `payments` VALUES (11, '3859343089e9348f31548ef31b838e1cc2e14bcf', '983808844593cac042189aa5fe7bde0bac714ebf', 1, 250, 0, '2022-03-09 22:47:42');
+INSERT INTO `payments` VALUES (12, 'ea9fd64d00e06db1f32059be81d8aabb62c07687', '983808844593cac042189aa5fe7bde0bac714ebf', 1, 250, 0, '2022-03-09 22:47:42');
+INSERT INTO `payments` VALUES (13, 'f7550927b573c863c1de554feef1f0e096859907', 'a1ef93c0f6409605209cbeca7a0f205aef3b5bb9', 1, 250, 0, '2022-03-09 22:54:47');
+INSERT INTO `payments` VALUES (14, '3de5cbca03101f147a3cc54eab5506ec8e69579c', '2b22baa833ed2c8ef68656f7d113afcdfe265b89', 1, 250, 0, '2022-03-09 22:56:19');
+INSERT INTO `payments` VALUES (15, 'ff5903c48b12fed827602b3370dfe7b18115e279', '766592a024fb36f6fbfabcaea6d9b348ecd950f7', 1, 250, 0, '2022-03-09 22:58:28');
+INSERT INTO `payments` VALUES (16, '11f78cbd2ffd4b242016a6c731985c85637a6181', '766592a024fb36f6fbfabcaea6d9b348ecd950f7', 1, 250, 0, '2022-03-09 22:58:28');
+INSERT INTO `payments` VALUES (17, 'd1a350910cb47f240bc61e8811f7f4cee0e70ecf', '7a3e51a0980f572d24d938f2e9d82bf01c98fc83', 1, 495, 0, '2022-03-10 12:34:50');
+INSERT INTO `payments` VALUES (18, 'b0efc931f3a8ac02b66fe250ff0c7da60cedd960', '8c8ebaea58aad82bc2d25c1611d4963e2303d939', 1, 495, 0, '2022-03-10 12:35:59');
+INSERT INTO `payments` VALUES (19, '03b834d2ad5582828cdf864ce8d8cc5e8254f3f0', '8999e6bc35e21f89d9e7c5a1fea4a896203f4275', 1, 495, 0, '2022-03-10 12:36:39');
 COMMIT;
 
 -- ----------------------------
@@ -493,19 +529,19 @@ CREATE TABLE `product_cat` (
   `photo` varchar(255) DEFAULT NULL,
   `cat_status` int(11) DEFAULT 1,
   PRIMARY KEY (`cat_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of product_cat
 -- ----------------------------
 BEGIN;
-INSERT INTO `product_cat` VALUES (1, 0, 'TOPS', NULL, NULL, 'car_Q1_shopbycategory_tops.png', 1);
+INSERT INTO `product_cat` VALUES (1, 0, 'ტოპები', 'TOPS', 'ТОПЫ', 'a08213fb-c98b-4824-8d93-dc43ad2fb1c6.png', 1);
 INSERT INTO `product_cat` VALUES (5, 0, 'BOTTOMS', 'BOTTOMS', 'BOTTOMS', '749e0075-1f69-4e49-b2af-4fbaaf9a1004.jpeg', 1);
 INSERT INTO `product_cat` VALUES (6, 0, 'SETS', NULL, NULL, 'fetured-item-3.png', 1);
 INSERT INTO `product_cat` VALUES (7, 0, 'PAJAMS', NULL, NULL, 'fetured-item-4.png', 1);
 INSERT INTO `product_cat` VALUES (8, 0, 'SHOES', NULL, NULL, 'fetured-item-5.png', 1);
 INSERT INTO `product_cat` VALUES (9, 0, 'MULTIPCK', NULL, NULL, 'fetured-item-6.png', 1);
-INSERT INTO `product_cat` VALUES (11, 1, 'Baby Boy', NULL, NULL, NULL, 1);
+INSERT INTO `product_cat` VALUES (11, 1, 'Baby Boy', NULL, NULL, NULL, 0);
 INSERT INTO `product_cat` VALUES (24, 1, 'Toddler Girl', '', '', NULL, 1);
 INSERT INTO `product_cat` VALUES (25, 1, 'Toddler Boy', NULL, NULL, NULL, 1);
 INSERT INTO `product_cat` VALUES (110, 1, 'Baby Girl', NULL, NULL, NULL, 1);
@@ -541,6 +577,7 @@ INSERT INTO `product_cat` VALUES (139, 7, 'Toddler Boy', NULL, NULL, NULL, 1);
 INSERT INTO `product_cat` VALUES (140, 7, 'Baby Girl', NULL, NULL, NULL, 1);
 INSERT INTO `product_cat` VALUES (141, 7, 'Kid Girl', NULL, NULL, NULL, 1);
 INSERT INTO `product_cat` VALUES (142, 7, 'Kid Boy', NULL, NULL, NULL, 1);
+INSERT INTO `product_cat` VALUES (145, 11, 'ჯინსები', 'Jeans', 'jeans', '', 1);
 COMMIT;
 
 -- ----------------------------
@@ -649,7 +686,7 @@ CREATE TABLE `shopping_cart` (
 -- Records of shopping_cart
 -- ----------------------------
 BEGIN;
-INSERT INTO `shopping_cart` VALUES (120, 1, '[{\"product_name_geo\":\"ჯინსი\",\"product_name_rus\":\"джинсы\",\"product_name_eng\":\"jeans\",\"product_id\":\"86\",\"color_name_geo\":\"წითელი\",\"color_name_eng\":\"RED\",\"color_name_rus\":\"красный\",\"size_name\":\"XL\",\"vriation_id\":20,\"quantity\":1,\"product_price\":\"507\",\"product_sale\":\"12\",\"image\":\"product-1.jpg\"},{\"product_name_geo\":\"ჯინსი\",\"product_name_rus\":\"jeans\",\"product_name_eng\":\"jeans\",\"product_id\":\"87\",\"color_name_geo\":\"ლურჯი\",\"color_name_eng\":\"BLUE\",\"color_name_rus\":\"синий\",\"size_name\":\"S\",\"vriation_id\":4,\"quantity\":1,\"product_price\":\"507\",\"product_sale\":\"300\",\"image\":\"product-2.jpg\"}]');
+INSERT INTO `shopping_cart` VALUES (120, 1, '');
 COMMIT;
 
 -- ----------------------------
