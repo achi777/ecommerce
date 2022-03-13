@@ -8,7 +8,7 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="page-title">მომხმარებლები 
+                <h3 class="page-title">მომხმარებლები
                     <small>
                         მომხმარებელთა სია
                     </small>
@@ -40,6 +40,7 @@
                                     <td>ტელეფონი</td>
                                     <td>სტატუსი</td>
                                     <td><i class="fa fa-user-circle-o"></i></td>
+                                    <td>კუპონის გაგზავნა</td>
                                 </tr>
                                 </thead>
 
@@ -65,11 +66,12 @@
                                                 <@else:@>
                                                     <a style="margin-left: 10px;" href="" data-href="{{baseurl}}/admin/user_active/{{$item->user_id}}/0/" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-ban"></i> </a>
                                                 <@endif@>
-                                                    
+
                                                 </td>
+                                                <td><a class="btn btn-primary" href="{{baseurl}}/admin/coupon_attach/{{$item->user_id}}/" role="button">კუპონის</a></td>
                                             </tr>
                                     <@endforeach@>
-                                
+
                                 <@endif@>
                                 </tbody>
                             </table>

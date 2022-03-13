@@ -24,7 +24,7 @@ class Controller extends init
     {
         $controller = $this->helper->segment(2);
         $data['controller'] = $controller;
-        
+
         $data['userList'] = $this->model->userList();
 
         //easy::out($data['productList']);
