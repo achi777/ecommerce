@@ -34,12 +34,12 @@ class Controller extends init
 
         if (!empty($this->input->post("product_cat_name_geo_up"))) {
             if ($details[0]->cat_parent_id == 0) {
-                if($_FILES['cat_photo']['size'] > 0){
+                if ($_FILES['cat_photo']['size'] > 0) {
                     $photo = $this->uploadPhoto($this->input->file("cat_photo"));
                     $this->model->up_product_cat($catID, $this->input->post("product_cat_name_geo_up"), $this->input->post("product_cat_name_eng_up"), $this->input->post("product_cat_name_rus_up"), $photo);
-                }else{
-                    $this->model->up_product_cat_nophoto($catID, $this->input->post("product_cat_name_geo_up"), $this->input->post("product_cat_name_eng_up"), $this->input->post("product_cat_name_rus_up"));                }
-
+                } else {
+                    $this->model->up_product_cat_nophoto($catID, $this->input->post("product_cat_name_geo_up"), $this->input->post("product_cat_name_eng_up"), $this->input->post("product_cat_name_rus_up"));
+                }
             } else {
                 $photo = "";
                 $this->model->up_product_cat($catID, $this->input->post("product_cat_name_geo_up"), $this->input->post("product_cat_name_eng_up"), $this->input->post("product_cat_name_rus_up"), $photo);
@@ -56,13 +56,13 @@ class Controller extends init
             }
             $_POST = array();
             //$this->helper->redirect(baseurl . "/admin/shop_cat/");
-        }elseif($cmd == "active"){
+        } elseif ($cmd == "active") {
             //echo $cmd;
-            $this->model->disableCat($catID, $active);
+            //$this->model->disableCat($catID, $active);
             //echo "<script>window.location.href='".baseurl."/admin/shop_cat_details/".$catID."'</script>";
             //unset($cmd);
             //$this->helper->redirect(baseurl."/admin/shop_cat_details/".$catID);
-            
+
         }
         //easy::out($data['productDetails']);
 

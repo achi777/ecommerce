@@ -41,7 +41,7 @@ class Controller extends init
         $data['userData'] = $this->model->userData($userID);
         $data["shippingData"] = $this->model->shipping_data($userID);
         $data["result"] = $this->model->ordersbyCode($orderCode);
-        easy::out($data["result"]);
+        //easy::out($data["result"]);
   
 
         /******************************************/

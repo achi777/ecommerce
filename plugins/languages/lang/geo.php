@@ -103,6 +103,7 @@ define('enter_your_coupon','შეიყვანეთ ვაუჩერის
 define('enter','შეყვანა');
 define('item_name','პროდუქტის დასახელება');
 define('quantity','რაოდენობა');
+define('wishlist', 'სურვილების სია');
 /*************************************/
 define('save','შენახვა');
 define('remove','წაშლა');
@@ -115,6 +116,11 @@ define('weight','წონა');
 define('brand','ბრენდი');
 define('product_title','პროდუქტის დასახელება');
 define('clothes_that_fit', 'პროდუქცია რომელიც უხდება');
+define('clothes','ტანსაცმელი');
+define('gallery','გალერეა');
+define('tranding','ტრენდული');
+define('SpecialOffer','სპეციალური შეთავაზება');
+
 /***********SQL**************/
 define('product_name','product_name_geo');
 define('product_desc','product_desc_geo');

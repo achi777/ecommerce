@@ -69,7 +69,7 @@ class Controller extends init
         $catalog = $this->model->catByID($catID);
         $catalog = json_decode($catalog);
         $currentCat = 0;
-        if($catalog[0]->cat_parent_id == 0){
+        if(@$catalog[0]->cat_parent_id == 0){
             $currentCat = 0; // if category is main
         }else{
             $currentCat = 1; // if category is sub

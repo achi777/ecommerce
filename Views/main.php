@@ -17,7 +17,7 @@
                       <span>Now Only</span> ₾ {{$item->product_price - $item->product_sale}}
                     </h3>
                     <div class="button">
-                      <a href="{{baseurl}}/details/{{$item->product_id}}" class="btn">{{view_details}}</a>
+                      <a href="{{baseurl}}/details/{{$item->product_id}}" class="btn btn-blue">{{view_details}}</a>
                     </div>
                   </div>
                 </div>
@@ -46,10 +46,11 @@
               <div class="col-lg-12 col-md-6 col-12">
                 <div class="hero-small-banner style2">
                   <div class="content">
-                    <h2>{{ $item->{product_name} }}</h2>
+                    <h2>{{ $item->{product_name} }} </h2>
                     <p>{{ $item->{product_desc} }}</p>
                     <div class="button">
-                      <a class="btn" href="{{baseurl}}/details/{{$item->product_id}}">{{view_details}}</a>
+                      <a href="{{baseurl}}/details/{{$item->product_id}}" class="btn btn-blue">
+                      {{view_details}} </a>
                     </div>
                   </div>
                 </div>
@@ -73,7 +74,7 @@
         <div class="row">
           <div class="col-12">
             <div class="section-title">
-              <h2>Featured Categories</h2>
+              <h2> {{gallery}}</h2>
             </div>
           </div>
         </div>
@@ -116,7 +117,7 @@
         <div class="row">
           <div class="col-12">
             <div class="section-title">
-              <h2>Trending Product</h2>
+              <h2>{{tranding}}</h2>
             </div>
           </div>
         </div>
@@ -127,7 +128,7 @@
               <div class="product-image">
                 <img src="{{baseurl}}/assets/images/products/{{$item->photo_url}}"  style="max-height: 288px!important;" alt="#">
                 <div class="button">
-                  <a href="{{baseurl}}/details/{{$item->product_id}}" class="btn">
+                  <a href="{{baseurl}}/details/{{$item->product_id}}" class="btn btn-blue">
                      {{view_details}} </a>
                 </div>
               </div>
@@ -192,13 +193,12 @@
 
     <!--special offer-->
 
-
     <section class="special-offer section">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <div class="section-title">
-              <h2>Special Offer</h2>
+              <h2>{{SpecialOffer}}</h2>
               <p>Sale event today</p>
             </div>
           </div>
@@ -213,14 +213,14 @@
                   <div class="product-image">
                     <img src="{{baseurl}}/assets/images/products/{{$item->photo_url}}"  style="max-height: 288px!important;" alt="{{$item->{product_name} }}">
                     <div class="button">
-                      <a href="{{baseurl}}/details/{{$item->product_id}}" class="btn">
+                      <a href="{{baseurl}}/details/{{$item->product_id}}" class="btn btn-blue">
                       {{view_details}} </a>
                     </div>
                   </div>
                   <div class="product-info">
                     <span class="category">{{ $item->{cat_name} }}</span>
                     <h4 class="title">
-                      <a href="product-grids.html">{{ $item->{product_name} }}</a>
+                      <a href="">{{ $item->{product_name} }}</a>
                     </h4>
                     <@if($item->product_sale > 0):@>
                       <div class="price">
@@ -246,7 +246,7 @@
                   <span>₾{{$productBestSale[0]->product_price - $productBestSale[0]->product_sale}}</span>
                 </div>
                 <div class="button">
-                  <a href="" class="btn">{{view_details}}</a>
+                  <a href="" class="btn btn-blue">{{view_details}}</a>
                 </div>
               </div>
             </div>
@@ -266,7 +266,7 @@
                   <span class="discount-price">₾{{$productBestSale[0]->product_price}}</span>
                 </div>
                 <div class="button">
-                      <a href="{{baseurl}}/details/{{$productBestSale[0]->product_id}}" class="btn">
+                      <a href="{{baseurl}}/details/{{$productBestSale[0]->product_id}}" class="btn btn-blue">
                          {{view_details}} </a>
                 </div>
                 <p>
@@ -413,7 +413,7 @@
                 </h4>
                 <p>{{$item->{description} }}</p>
                 <div class="button">
-                  <a href="{{baseurl}}/info_details/{{$item->id}}" class="btn">{{fullView}}</a>
+                  <a href="{{baseurl}}/info_details/{{$item->id}}" class="btn btn-blue">{{fullView}}</a>
                 </div>
               </div>
             </div>
@@ -432,7 +432,7 @@
 
 
     
-    <section class="shipping-info">
+    <section class="shipping-info d-none d-sm-block">
       <div class="container">
         <ul>
           <li>
@@ -477,3 +477,4 @@
 
 
     <!--/shipping-->
+

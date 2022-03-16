@@ -68,23 +68,26 @@ class Model extends init
         $subCatArray[] = array();
         $myArray[] = array();
         $i = 0;
-        foreach ($catArray as $item) {
+        if (is_array($catArray)) {
+            foreach ($catArray as $item) {
 
-            $myArray = json_decode($this->catalogByID($item->cat_id));
+                $myArray = json_decode($this->catalogByID($item->cat_id));
 
-            if (is_array($myArray)) {
-                foreach ($myArray as $value) {
-                    $item = array(
-                        'cat_id' => $value->cat_id,
-                        'cat_parent_id' => $value->cat_parent_id,
-                        'cat_name_geo' => $value->cat_name_geo
-                    );
-                    $data_array[] = $item;
+                if (is_array($myArray)) {
+                    foreach ($myArray as $value) {
+                        $item = array(
+                            'cat_id' => $value->cat_id,
+                            'cat_parent_id' => $value->cat_parent_id,
+                            'cat_name_geo' => $value->cat_name_geo
+                        );
+                        $data_array[] = $item;
+                    }
                 }
             }
         }
+
         // var_dump($data_array);
-        return json_encode($data_array);
+        return json_encode(@$data_array);
     }
 
     public function postByID(int $id): string
@@ -260,6 +263,19 @@ class Model extends init
     {
         /**pagination**/
         $result = $this->db->pagination(9);
+        return $result;
+    }
+
+    public function searchProduct($word)
+    {
+        $this->db->select(product_name, "product_id");
+        $this->db->from("product");
+        $this->db->where("product_status", 1);
+        $this->db->like(product_name, $word);
+        $this->db->limit(8);
+        $this->db->group("product.product_id");
+        $this->db->order("RAND()");
+        $result = $this->db->exec("get");
         return $result;
     }
 
@@ -599,7 +615,8 @@ class Model extends init
         return $result;
     }
 
-    public function comboByProductID($productID){
+    public function comboByProductID($productID)
+    {
         $this->db->select("*");
         $this->db->from("combo_list");
         $this->db->where("product_id", $productID);
@@ -707,7 +724,8 @@ class Model extends init
         $this->db->exec("insert");
     }
 
-    public function insertOrder($userID, $productID, $variationID, $productNameGeo, $productNameEng, $productNameRus, $productPrice, $productSale, $shippingCompanyID, $orderCode, $status, $cuponCode, $trackingCode, $orderDate, $colorNameGeo, $colorNameEng, $colorNameRus, $sizeName, $quantity, $image){
+    public function insertOrder($userID, $productID, $variationID, $productNameGeo, $productNameEng, $productNameRus, $productPrice, $productSale, $shippingCompanyID, $orderCode, $status, $cuponCode, $trackingCode, $orderDate, $colorNameGeo, $colorNameEng, $colorNameRus, $sizeName, $quantity, $image)
+    {
         /*Insert*/
         $this->db->table("orders");
         $this->db->columns("user_id", "product_id", "variation_id", "product_name_geo", "product_name_eng", "product_name_rus", "product_price", "product_sale", "shipping_company_id", "order_code", "status", "cupon_code", "tracking_code", "order_date", "color_name_geo", "color_name_eng", "color_name_rus", "size_name", "quantity", "image");
@@ -715,7 +733,8 @@ class Model extends init
         $this->db->exec("insert");
     }
 
-    public function updateOrder($paymentHash, $status){
+    public function updateOrder($paymentHash, $status)
+    {
         $this->db->table("orders");
         $this->db->columns("status");
         $this->db->values($status);
@@ -723,7 +742,8 @@ class Model extends init
     }
 
     /** PAYMENTS **/
-    public function addPayOrder($orderID, $paymentHash, $userID, $amount, $paymentDate){
+    public function addPayOrder($orderID, $paymentHash, $userID, $amount, $paymentDate)
+    {
         /*Insert*/
         $this->db->table("payments");
         $this->db->columns("pay_order_id", "payment_hash", "user_id", "amount", "payment_date");
@@ -731,7 +751,8 @@ class Model extends init
         $this->db->exec("insert");
     }
 
-    public function updatePayOrder($orderID, $paymentHash){
+    public function updatePayOrder($orderID, $paymentHash)
+    {
         /*Insert*/
         $this->db->table("payments");
         $this->db->columns("status", 1);
@@ -767,5 +788,4 @@ class Model extends init
         $result = $this->db->exec("get");
         return $result;
     }
-
 }

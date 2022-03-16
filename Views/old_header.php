@@ -118,6 +118,15 @@
     padding: 15px 0;
     z-index: 999;
 }
+
+.ms-n5 {
+    margin-left: -40px!important;
+}
+.btn-blue{
+  background-color: #00a9e0!important;
+  color:#fff!important;
+}
+
 </style>
 <div class="preloader">
   <div class="preloader-inner">
@@ -136,34 +145,37 @@
             <ul class="menu-top-link">
               <li>
                 <div class="select-position">
-                  <select id="lang">
-                    <@if($_SESSION['lang']=="eng" ):@>
-                      <option value="eng" selected>English</option>
-                      <option value="geo">ქართული</option>
-                      <option value="rus">Русский</option>
-                      <@elseif($_SESSION['lang']=="rus" ):@>
-                        <option value="rus" selected>Русский</option>
-                        <option value="eng">English</option>
-                        <option value="geo">ქართული</option>
-                        <@else:@>
-                          <option value="geo" selected>ქართული</option>
-                          <option value="eng">English</option>
-                          <option value="rus">Русский</option>
-                          <@endif@>
-                  </select>
+
+                    <div class="dropdown" style="background-color: #f9f9f9!important;">
+                      <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <@if($_SESSION['lang']=="eng" ):@>
+                        <i class="flag-icon flag-icon-us"></i> English</a>
+                      <@elseif($_SESSION['lang']=="rus" ):@> 
+                        <i class="flag-icon flag-icon-ru"></i> Русский</a>
+                      <@else:@>
+                        <i class="flag-icon flag-icon-ge"></i> ქართული</a>
+                      <@endif@>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{{baseurl}}/lang_switcher/geo"><i class="flag-icon flag-icon-ge"></i> ქართული</a></li>
+                        <li><a class="dropdown-item" href="{{baseurl}}/lang_switcher/eng"><i class="flag-icon flag-icon-us"></i> English</a></li>
+                        <li><a class="dropdown-item" href="{{baseurl}}/lang_switcher/rus"><i class="flag-icon flag-icon-ru"></i> Русский</a></li>
+                      </ul>
+                    </div>
+
                 </div>
               </li>
             </ul>
           </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-12">
+        <div class="col-lg-3 col-md-4 col-12">
           <div class="top-middle">
             <!--TOP Center-->
 
             <!--/TOP Center-->
           </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-12" style="background-color: #f9f9f9!important;">
+        <div class="col-lg-5 col-md-4 col-12 d-none d-sm-block" style="background-color: #f9f9f9!important;">
           <!--profile-->
           <@if($_SESSION['userID']> 0):@>
             <div class="top-end">
@@ -172,13 +184,13 @@
                     <a href="{{baseurl}}/profile"> <img src="{{baseurl}}/assets/icons/icons/user.jpg"> {{profile}}</a>
                   </li>
                   <li>
-                    <a href="{{baseurl}}/wishlist"> <img src="{{baseurl}}/assets/icons/icons/wishlist.jpg"> Hearts</a>
+                    <a href="{{baseurl}}/wishlist"> <img src="{{baseurl}}/assets/icons/icons/wishlist.jpg"> {{wishlist}}</a>
                   </li>
                   <li>
                     <a href="{{baseurl}}/orders"> <img src="{{baseurl}}/assets/icons/icons/orders.jpg"> {{orders}}</a>
                   </li>
                   <li>
-                    <a href="{{baseurl}}/cart"> <img src="{{baseurl}}/assets/icons/icons/cart-empty.jpg"> {{cart}}</a>
+                    <a href="{{baseurl}}/cart"> <img src="{{baseurl}}/assets/icons/icons/cart-empty.jpg"> {{shopping_cart}}</a>
                   </li>
                 </ul>
             </div>
@@ -189,13 +201,13 @@
                     <a href="{{baseurl}}/login"> <img src="{{baseurl}}/assets/icons/icons/user.jpg"> {{login}}</a>
                   </li>
                   <li>
-                    <a href="{{baseurl}}/wishlist"> <img src="{{baseurl}}/assets/icons/icons/wishlist.jpg"> Hearts</a>
+                    <a href="{{baseurl}}/wishlist"> <img src="{{baseurl}}/assets/icons/icons/wishlist.jpg"> {{wishlist}}</a>
                   </li>
                   <li>
                     <a href="{{baseurl}}/orders"> <img src="{{baseurl}}/assets/icons/icons/orders.jpg"> {{orders}}</a>
                   </li>
                   <li>
-                    <a href="{{baseurl}}/cart"> <img src="{{baseurl}}/assets/icons/icons/cart-empty.jpg"> {{cart}}</a>
+                    <a href="{{baseurl}}/cart"> <img src="{{baseurl}}/assets/icons/icons/cart-empty.jpg"> {{shopping_cart}}</a>
                   </li>
                 </ul>
               </div>
@@ -209,7 +221,7 @@
   <div class="header-middle">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-2 col-md-2 col-7">
+        <div class="col-lg-2 col-md-2 col-5">
           <a class="navbar-brand" href="{{baseurl}}/">
             <img src="{{baseurl}}/assets/images/logo/logo.png" alt="Logo">
           </a>
@@ -241,8 +253,12 @@
                             </div><!-- end col-3 -->
                             <div class="col-lg-5 col-12" style="min-height: 600px;">
                               <div class="col-megamenu">
-                                <h6 class="title">{{$item->{cat_name} }} clothes</h6>
-                                  <div>test</div>
+                                <h6 class="title">{{$item->{cat_name} }}</h6>
+                                  <div>
+                                    <div class="images">
+                                      <img src="{{baseurl}}/assets/images/featured-categories/{{$item->photo}}" alt="#">
+                                    </div>
+                                  </div>
                               </div> <!-- col-megamenu.// -->
                             </div><!-- end col-3 -->
                             <div class="col-lg-3 col-6">
@@ -268,32 +284,70 @@
           <!-- ============= COMPONENT END// ============== -->
 
         </div>
-        <div class="col-lg-3 col-md-3 col-5">
-          <div class="middle-right-area">
 
+        <div class="col-lg-3 col-md-3 col-5">
+          <div class="middle-right-area row">
+            
             <!--rightbar-->
             <div class="main-menu-search" style="min-width:100%!important;">
               <div class="navbar-search search-style-5">
                 <div class="search-input">
-                  <!--http://192.168.64.2/shop/x/x/x/x/x/x/search/-->
                   <input type="text" name="search" id="search" placeholder="Search">
                 </div>
                 <div class="search-btn">
-                  <button onclick="search();">
+                  <button class="btn-blue" onclick="search();">
                     <i class="lni lni-search-alt"></i>
                   </button>
                 </div>
+             
+               
+              <!--
+                <div class="input-group">
+                <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="search" name="search" id="search">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button" onclick="search();">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+                </div>
+              -->
+              <!--
+              <div class="input-group mb-3">
+                <input type="text" class="form-control rounded-pill" name="search" id="search" placeholder="search" aria-label="search" aria-describedby="button-addon2">
+                <button onclick="search();" class="btn btn-outline-secondary rounded-pill ms-n5" style="border: 0!important;" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
+              </div>
+              -->
+
               </div>
             </div>
 
           </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-2 d-xl-none d-lg-none">
+        <@if($_SESSION['userID']> 0):@>
+            <div class="top-end  d-xl-none d-lg-none">
+            <ul class="user-login">
+                  <li>
+                    <a href="{{baseurl}}/profile"> <i class="fa-regular fa-circle-user fa-2x fa-lg-5" style="color:darkgrey;"></i> </a>
+                  </li>
+                </ul>
+            </div>
+            <@else:@>
+              <div class="top-end">
+                <ul class="user-login">
+                  <li>
+                    <a href="{{baseurl}}/login"> <i class="fa-regular fa-circle-user fa-2x fa-lg-12"  style="color:darkgrey;"></i> </a>
+                  </li>
+                </ul>
+              </div>
+              <@endif@>
         </div>
       </div>
     </div>
   </div>
   <div class="container">
     <div class="row align-items-center">
-      <div style="background-color:#f9f9f9; min-height:20px; border-bottom: 2px solid #0267f3;" class="w-100"></div>
+      <div style="background-color:#f9f9f9; min-height:20px; border-bottom: 2px solid #00a9e0;" class="w-100"></div>
       <!--<div class="col-lg-8 col-md-6 col-12">
         <div class="nav-inner">
           <div class="mega-category-menu">

@@ -44,24 +44,24 @@
                                                     <input type="text" class="form-control" name="product_cat_name_rus_up" value="{{$details[0]->cat_name_rus}}">
                                                 </div>
                                             </div>
-                                            <@if($details[0]->cat_parent_id == 0):@>
-                                                <div class="form-group row">
-                                                    <div class="col-md-4">
-                                                        <label class="control-label col-form-label"> ფოტო</label>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <input type="file" class="form-control" name="cat_photo">
-                                                    </div>
-                                                </div>
-                                                <@endif@>
 
-                                                    <div class="form-group row">
-                                                        <div class="col-md-12">
-                                                            <span class="input-group-btn">
-                                                                <button type="submit" name="update" class="btn btn-warning"><i class="fa fa-cloud-upload"></i> რედაქტირება</button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-4">
+                                                    <label class="control-label col-form-label"> აირჩიეთ ფოტო (200x200) </label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="file" class="form-control" name="cat_photo">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <span class="input-group-btn">
+                                                        <button type="submit" name="update" class="btn btn-warning"><i class="fa fa-cloud-upload"></i> რედაქტირება</button>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </form>
                                     </fieldset>
                                     <@endif@>
@@ -98,7 +98,7 @@
                                                 <@if($catID==0):@>
                                                     <div class="form-group row">
                                                         <div class="col-md-4">
-                                                            <label class="control-label col-form-label">აირჩიეთ ფოტო (200x200)/label>
+                                                            <label class="control-label col-form-label">აირჩიეთ ფოტო (200x200) </label>
                                                         </div>
                                                         <div class="col-md-8">
                                                             <input type="file" class="form-control" name="cat_photo">

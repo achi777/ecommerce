@@ -41,18 +41,21 @@ class Controller extends init
         //var_dump($data['specialOffer']);
         //easy::out($data['infoCats']);
         //easy::out($data['catalog']);
-       // $data['randomPost'] = $this->model->randomPost();
-       // $data['postList'] = $this->model->postList();
-       // $data['pagination'] = $this->model->pagination();
-       $catalog = json_decode($data['catalog']);
-       $menus[] = new stdClass;
-       $j = 0;
-       foreach($catalog AS $item){
-            @$menus[$j]->menu = @$this->model->productTreeByID($item->cat_id);
-            $j++;
-       }
-       //var_dump($menus);
-       $data['menus'] = json_encode($menus);
+        // $data['randomPost'] = $this->model->randomPost();
+        // $data['postList'] = $this->model->postList();
+        // $data['pagination'] = $this->model->pagination();
+        $catalog = json_decode($data['catalog']);
+        $menus[] = new stdClass;
+        $j = 0;
+        if (is_array($catalog)) {
+            foreach ($catalog as $item) {
+                @$menus[$j]->menu = @$this->model->productTreeByID($item->cat_id);
+                $j++;
+            }
+        }
+
+        //var_dump($menus);
+        $data['menus'] = json_encode($menus);
         /******************************************/
         $this->load->template_start($header_data);
         /******************************************/
@@ -61,6 +64,5 @@ class Controller extends init
         $this->load->view("footer", $data);
         /******************************************/
         $this->load->template_end();
-
     }
 }
