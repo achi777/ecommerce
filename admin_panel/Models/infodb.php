@@ -87,7 +87,6 @@ class infoModel extends init
         return $this->db->exec("INSERT");
     }
 
-
     public function deleteFromBase($id){
         /*Delete*/
         $this->db->table("posts");
@@ -103,5 +102,22 @@ class infoModel extends init
         $this->db->table("posts");
         $this->db->where("cat_id",$catID);
         $this->db->exec("DELETE");
+    }
+
+    public function infoToCupons($cupon_code, $cupon_amount, $status){
+        /*Insert*/
+        $this->db->table("cupons");
+        $this->db->columns("cupon_code", "cupon_amount","status");
+        $this->db->values($cupon_code, $cupon_amount,$status);
+        return $this->db->exec("INSERT");
+    }
+
+    public function membersUser($userId){
+        /*Get*/
+        $this->db->select("email");
+        $this->db->table("members");
+        $this->db->where("user_id",$userId);
+        $result = $this->db->exec("get");
+        return $result;
     }
 }
