@@ -38,6 +38,22 @@ class Controller extends init
         $data['randomPost'] = $this->infoModel->randomPost();
         $data['postList'] = $this->infoModel->postList();
         $data['pagination'] = $this->infoModel->pagination();
+
+        $data['catalog'] = $this->shopModel->catalog();
+        $data['catalogSub'] = $this->shopModel->catalogSub();
+        $data['searchData'] = $this->shopModel->searchProduct();
+        $catalog = json_decode($data['catalog']);
+        $menus[] = new stdClass;
+        $j = 0;
+        if (is_array($catalog)) {
+            foreach ($catalog as $item) {
+                @$menus[$j]->menu = @$this->shopModel->productTreeByID($item->cat_id);
+                $j++;
+            }
+        }
+
+        //var_dump($menus);
+        $data['menus'] = json_encode($menus);
         /******************************************/
         $this->load->template_start($header_data);
         /******************************************/

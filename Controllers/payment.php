@@ -68,6 +68,22 @@ class Controller extends init
             }
         }
 
+        $data['catalog'] = $this->model->catalog();
+        $data['catalogSub'] = $this->model->catalogSub();
+        $data['searchData'] = $this->model->searchProduct();
+        $catalog = json_decode($data['catalog']);
+        $menus[] = new stdClass;
+        $j = 0;
+        if (is_array($catalog)) {
+            foreach ($catalog as $item) {
+                @$menus[$j]->menu = @$this->model->productTreeByID($item->cat_id);
+                $j++;
+            }
+        }
+
+        //var_dump($menus);
+        $data['menus'] = json_encode($menus);
+
         /******************************************/
         $this->load->template_start($data);
         /******************************************/

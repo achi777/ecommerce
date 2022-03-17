@@ -30,7 +30,7 @@ class Controller extends init
         $data['nav'] = json_encode($nav);
         $data['infoCats'] = $this->infoModel->postCats();
         if(!empty($this->helper->segment(2) && $this->helper->segment(2) != 0)){
-             $catID = $this->convert->to_int($this->helper->segment(2));
+            $catID = $this->convert->to_int($this->helper->segment(2));
         }else{
             $catID = 1;
         }
@@ -104,7 +104,22 @@ class Controller extends init
         $data['brandList'] = $this->model->brandList();
         $data['params'] = json_encode($params);
         
-        //var_dump($data['productList']);
+
+        $data['catalog'] = $this->model->catalog();
+        $data['catalogSub'] = $this->model->catalogSub();
+        $data['searchData'] = $this->model->searchProduct();
+        $catalog = json_decode($data['catalog']);
+        $menus[] = new stdClass;
+        $j = 0;
+        if (is_array($catalog)) {
+            foreach ($catalog as $item) {
+                @$menus[$j]->menu = @$this->model->productTreeByID($item->cat_id);
+                $j++;
+            }
+        }
+
+        //var_dump($menus);
+        $data['menus'] = json_encode($menus);
         /******************************************/
         $this->load->template_start($header_data);
         /******************************************/

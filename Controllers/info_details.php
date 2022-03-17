@@ -33,6 +33,22 @@ class Controller extends init
         $data['copyright'] = "© Archil Odishelidze 2019";
         $data['tree'] = $this->shopModel->product_tree();
         $data['details'] = $this->infoModel->postByID($this->convert->to_int($this->helper->segment(2)));
+
+        $data['catalog'] = $this->shopModel->catalog();
+        $data['catalogSub'] = $this->shopModel->catalogSub();
+        $data['searchData'] = $this->shopModel->searchProduct();
+        $catalog = json_decode($data['catalog']);
+        $menus[] = new stdClass;
+        $j = 0;
+        if (is_array($catalog)) {
+            foreach ($catalog as $item) {
+                @$menus[$j]->menu = @$this->shopModel->productTreeByID($item->cat_id);
+                $j++;
+            }
+        }
+
+        //var_dump($menus);
+        $data['menus'] = json_encode($menus);
         /******************************************/
         $this->load->template_start($header_data);
         /******************************************/

@@ -38,6 +38,9 @@ class Controller extends init
         $data['infoCats'] = $this->infoModel->postCats();
         $data['lastPosts'] = $this->infoModel->lastPost();
         $data['sizes'] = $this->model->sizes();
+
+        $data['searchData'] = $this->model->searchProduct();
+
         //var_dump($data['specialOffer']);
         //easy::out($data['infoCats']);
         //easy::out($data['catalog']);

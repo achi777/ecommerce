@@ -238,11 +238,14 @@ class Model extends init
         if ($params[0]->priceRange != "x") {
             $this->db->where("product.product_price <= ", $params[0]->priceRange);
         }
-        if ($params[0]->catType == 0) {
-            $this->db->where("product_cat.cat_parent_id", $catID);
-        } else {
-            $this->db->where("product.cat_id", $catID);
+        if($params[0]->catID > 1){
+            if ($params[0]->catType == 0) {
+                $this->db->where("product_cat.cat_parent_id", $catID);
+            } else {
+                $this->db->where("product.cat_id", $catID);
+            }
         }
+        
         if ($params[0]->search != "x") {
             $this->db->like("product.product_name_geo", $params[0]->search);
         }
@@ -266,15 +269,15 @@ class Model extends init
         return $result;
     }
 
-    public function searchProduct($word)
+    public function searchProduct()
     {
         $this->db->select(product_name, "product_id");
         $this->db->from("product");
         $this->db->where("product_status", 1);
-        $this->db->like(product_name, $word);
-        $this->db->limit(8);
+        //$this->db->like(product_name, $word);
+        //$this->db->limit(8);
         $this->db->group("product.product_id");
-        $this->db->order("RAND()");
+        $this->db->order(product_name);
         $result = $this->db->exec("get");
         return $result;
     }

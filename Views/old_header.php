@@ -127,6 +127,14 @@
   color:#fff!important;
 }
 
+.datalist{
+  position:absolute!important; 
+  width:100%!important; 
+  height:100%!important; 
+  top:0!important;
+  margin-top: 0xp;
+  
+}
 </style>
 <div class="preloader">
   <div class="preloader-inner">
@@ -291,32 +299,23 @@
             <!--rightbar-->
             <div class="main-menu-search" style="min-width:100%!important;">
               <div class="navbar-search search-style-5">
-                <div class="search-input">
-                  <input type="text" name="search" id="search" placeholder="Search">
+         
+                <div class="search-input d-none d-sm-block">
+                  <input type="text" name="search" id="search" list="names" placeholder="Search">
+                  <datalist id="names">
+                    <@foreach($searchData AS $item):@>
+                      <option value="{{$item->{product_name} }}" data-id="{{$item->{product_name} }}" />
+                    <@endforeach@>
+                  </datalist>
                 </div>
-                <div class="search-btn">
-                  <button class="btn-blue" onclick="search();">
-                    <i class="lni lni-search-alt"></i>
+                <div class="search-btn d-none d-sm-block">
+                  <button class="btn">
+                    <i class="fas fa-search"></i>
                   </button>
-                </div>
-             
-               
-              <!--
-                <div class="input-group">
-                <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="search" name="search" id="search">
-                <span class="input-group-append">
-                    <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button" onclick="search();">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </span>
-                </div>
-              -->
-              <!--
-              <div class="input-group mb-3">
-                <input type="text" class="form-control rounded-pill" name="search" id="search" placeholder="search" aria-label="search" aria-describedby="button-addon2">
-                <button onclick="search();" class="btn btn-outline-secondary rounded-pill ms-n5" style="border: 0!important;" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
-              </div>
-              -->
+                </div>  
+                <div class="search-btn  d-xl-none d-lg-none">
+                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fas fa-search"></i>  </button>
+                </div>             
 
               </div>
             </div>
