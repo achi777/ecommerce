@@ -207,7 +207,7 @@
               <div class="navbar-search search-style-4">
         
                 <div class="search-input d-xl-none d-lg-none">
-                  <input type="text" name="search" id="search" list="names" placeholder="Search">
+                  <input type="text" name="search" id="search" list="names" placeholder="{{search}}">
                   <datalist id="names">
                     <@foreach($searchData AS $item):@>
                       <option value="{{$item->{product_name} }}" data-id="{{$item->{product_name} }}" />
