@@ -175,13 +175,13 @@
         <a href="{{baseurl}}"> <i class="fa-solid fa-house fa-2x fa-lg-5" style="color:darkgrey;"></i> </a>
       </li>
       <li class="nav-item">
-        <a href="{{baseurl}}/wishlist"> <i class="fa-solid fa-heart fa-2x fa-lg-5" aria-hidden="true" style="color:darkgrey;"></i> </a>
+        <a href="{{baseurl}}/wishlist"> <i class="fa-solid fa-heart fa-2x fa-lg-5" aria-hidden="true" style="color:darkgrey; margin-left:25px;"></i> </a>
       </li>
       <li class="nav-item">
-        <a href="{{baseurl}}/orders"> <i class="fa-solid fa-box fa-2x fa-lg-5" style="color:darkgrey;"></i> </a>
+        <a href="{{baseurl}}/orders"> <i class="fa-solid fa-box fa-2x fa-lg-5" style="color:darkgrey; margin-left:25px;"></i> </a>
       </li>
       <li class="nav-item">
-        <a href="{{baseurl}}/cart"> <i class="fa-solid fa-cart-shopping fa-2x fa-lg-5" style="color:darkgrey;"></i> </a>
+        <a href="{{baseurl}}/cart"> <i class="fa-solid fa-cart-shopping fa-2x fa-lg-5" style="color:darkgrey; margin-left:25px;"></i> </a>
       </li>
     </ul>
 
