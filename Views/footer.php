@@ -190,14 +190,65 @@
 </nav>
 
 
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      <div class="main-menu-search" style="min-width:100%!important;">
+              <div class="navbar-search search-style-4">
+        
+                <div class="search-input d-xl-none d-lg-none">
+                  <input type="text" name="search" id="search" list="names" placeholder="Search">
+                  <datalist id="names">
+                    <@foreach($searchData AS $item):@>
+                      <option value="{{$item->{product_name} }}" data-id="{{$item->{product_name} }}" />
+                    <@endforeach@>
+                  </datalist>
+                </div>           
+
+              </div>
+            </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="{{baseurl}}/assets/js/tiny-slider.js"></script>
 <script src="{{baseurl}}/assets/js/glightbox.min.js"></script>
 <script src="{{baseurl}}/assets/js/main.js"></script>
 <script src='https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js'></script>
-<script src="https://kit.fontawesome.com/b11293661a.js" crossorigin="anonymous"></script>
 
+<script src="https://kit.fontawesome.com/b11293661a.js" crossorigin="anonymous"></script>
+<script>
+  function is_valid_datalist_value(idDataList, inputValue) {
+  var option = document.querySelector("#" + idDataList + " option[value='" + inputValue + "']");
+  if (option != null) {
+    return option.value.length > 0;
+  }
+  return false;
+}
+
+
+$(document).on('change', '#search', function(){
+    let word = $("#search").val();
+    window.location.href = "http://192.168.64.2/shop/1/x/x/x/x/x/" + word + "/";
+});
+</script>
 <@if($controller=="main" ):@>
   <script type="text/javascript">
     //========= Hero Slider 
@@ -381,50 +432,5 @@
         }
       });
     </script>
-    <script>
-      $( document ).ready(function() {	
-          $("#search.thead").typeahead({
-            source: function (query, process) {
-              $.ajax({
-                url: "{{baseurl}}/search_ajax",
-                type: "POST",
-                data: 'query='+query,
-                dataType: 'JSON',
-                async: true,
-                success: function(data){
-                      var resultList = data.map(function (item) {
-                      var link = { href: '{{baseurl}}/shop/'+item.product_id, name: item.product_name_geo };
-                      return JSON.stringify(link);					  
-                    });
-                  return process(resultList);
-                }
-              })
-            },	
-            matcher: function (obj) {
-              var item = JSON.parse(obj);
-              return item.name.toLowerCase().indexOf(this.query.toLowerCase())
-            },
-            sorter: function (items) {          
-              var beginswith = [], caseSensitive = [], caseInsensitive = [], item;
-              while (link = items.shift()) {
-                var item = JSON.parse(link);
-                if (!item.name.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(JSON.stringify(item));
-                else if (item.name.indexOf(this.query)) caseSensitive.push(JSON.stringify(item));
-                else caseInsensitive.push(JSON.stringify(item));
-              }
-              return beginswith.concat(caseSensitive, caseInsensitive)
-            },
-            highlighter: function (link) {		
-              var item = JSON.parse(link);		
-              var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
-              return item.name.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
-                return '<strong>' + match + '</strong>'
-              })
-            },
-            updater: function (link) {
-              var item = JSON.parse(link);       
-              location.href=item.href;       
-            }
-          });	
-        });
-    </script>
+
+
