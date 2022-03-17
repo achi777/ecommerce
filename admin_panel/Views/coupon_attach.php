@@ -46,7 +46,7 @@
                                             <label class="control-label col-form-label"> მომხმარებლის მეილი</label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="email" class="form-control" name="email" value="{{$firstUSer}}">
+                                            <input type="email" class="form-control" name="email" value="{{$userData[0]->email}}">
                                         </div>
                                     </div>
                                     <div class="form-group row margin-top-10">

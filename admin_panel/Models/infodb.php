@@ -104,20 +104,20 @@ class infoModel extends init
         $this->db->exec("DELETE");
     }
 
+    public function membersUser($userId){
+        /*Get*/
+        $this->db->select("*");
+        $this->db->table("members");
+        $this->db->where("user_id",$userId);
+        $result = $this->db->exec("get");
+        return $result;
+    }
+
     public function infoToCupons($cupon_code, $cupon_amount, $status){
         /*Insert*/
         $this->db->table("cupons");
         $this->db->columns("cupon_code", "cupon_amount","status");
         $this->db->values($cupon_code, $cupon_amount,$status);
         return $this->db->exec("INSERT");
-    }
-
-    public function membersUser($userId){
-        /*Get*/
-        $this->db->select("email");
-        $this->db->table("members");
-        $this->db->where("user_id",$userId);
-        $result = $this->db->exec("get");
-        return $result;
     }
 }

@@ -22,18 +22,19 @@ class Controller extends init
     public function coupon_attach(){
         $userID = $this->helper->segment(3);
         $firstUSer= $this->model->membersUser($userID);
-        $data['firstUSer'] = json_decode($firstUSer, true)[0]['email'];
+        $data['userData'] = $firstUSer;
         $data['coupon_uuid'] = easy::uuid();
         if (!empty($this->input->post("addCupon"))) {
             $uuid = $this->input->post("uuid");
             $email = $this->input->post("email");
             $cupon_amount = $this->input->post("cupon_amount");
+            $userData = json_decode($firstUSer);
 
             $this->model->infoToCupons($uuid,$cupon_amount,1);
 
             $text = "	<center>
-                            <b>Hello</b> <br>
-                            <font color=\"red\">უპონის კოდი</font> <br>
+                            <b>გამარჯობათ ".$userData->firstname."</b> <br>
+                            <font color=\"red\"> ფასდაკლების კუპონის კოდი</font> <br>
                             <p><b>Code : </b>".$uuid."</p>
                         </center>
                         <br><br>";
