@@ -251,21 +251,24 @@
                 <h5 class="title">Navigation</h5>
                 <div class="sub-total-price">
                   <div class="total-price">
-                    <p><span style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Personal Details</a> </span>
+                    <p><span style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Personal Details </span>
                   </div>
                   <div class="total-price shipping">
-                    <p><span style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Shipping Address</a> </span>
+                    <p><span style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Shipping Address </span>
                   </div>
                   <div class="total-price shipping">
-                    <p><span style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">Security Details</a> </span>
+                    <p><span style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">Security Details </span>
                   </div>
                   <div class="total-price shipping">
-                    <p><span style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">My Orders</a> </span>
+                    <p><span style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">My Orders </span>
+                  </div>
+                  <div class="total-price shipping">
+                    <p><span onclick="window.location='{{baseurl}}/logout'" style="cursor:pointer" aria-controls="collapsesix">{{logout}} </span>
                   </div>
                 </div>
               </div>
               <div class="checkout-sidebar-banner mt-30">
-                <a href="product-grids.html">
+                <a href="">
                   <img src="{{baseurl}}/assets/images/banner/banner.jpg" alt="#">
                 </a>
               </div>

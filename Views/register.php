@@ -10,44 +10,44 @@
               <form class="row" method="post">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="reg-fn">First Name</label>
+                    <label for="reg-fn">{{firstname}}</label>
                     <input class="form-control" type="text" name="firstname" id="reg-fn" required>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="reg-ln">Last Name</label>
+                    <label for="reg-ln">{{lastname}}</label>
                     <input class="form-control" type="text" name="lastname" id="reg-ln" required>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="reg-email">E-mail Address</label>
+                    <label for="reg-email">{{email}}</label>
                     <input class="form-control" type="email" name="email" id="reg-email" required>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="reg-phone">Phone Number</label>
+                    <label for="reg-phone">{{tel}}</label>
                     <input class="form-control" type="text" name="phone" id="reg-phone" required>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="reg-pass">Password</label>
+                    <label for="reg-pass">{{password}}</label>
                     <input class="form-control" type="password" name="password" id="reg-pass" required>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="reg-pass-confirm">Confirm Password</label>
+                    <label for="reg-pass-confirm">{{rpassword}}</label>
                     <input class="form-control" type="password" name="rpassword" id="reg-pass-confirm" required>
                   </div>
                 </div>
                 <div class="button">
-                  <button class="btn" type="submit">Register</button>
+                  <button class="btn" type="submit">{{registration}}</button>
                 </div>
-                <p class="outer-link">Already have an account? <a href="{{baseurl}}/login">Login Now</a>
+                <p class="outer-link">Already have an account? <a href="{{baseurl}}/login">{{login}}</a>
                 </p>
               </form>
             </div>

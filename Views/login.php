@@ -28,11 +28,11 @@
                   <span>Or</span>
                 </div>
                 <div class="form-group input-group">
-                  <label for="reg-fn">Email</label>
+                  <label for="reg-fn">{{email}}</label>
                   <input class="form-control" type="email" name="email" id="reg-email" required>
                 </div>
                 <div class="form-group input-group">
-                  <label for="reg-fn">Password</label>
+                  <label for="reg-fn">{{password}}</label>
                   <input class="form-control" type="password" name="password" id="reg-pass" required>
                 </div>
                 <div class="d-flex flex-wrap justify-content-between bottom-content">
@@ -40,12 +40,12 @@
                     <input type="checkbox" class="form-check-input width-auto" id="exampleCheck1">
                     <label class="form-check-label">Remember me</label>
                   </div>
-                  <a class="lost-pass" href="{{baseurl}}/forgot_password">Forgot password?</a>
+                  <a class="lost-pass" href="{{baseurl}}/forgot_password">{{passRec}}</a>
                 </div>
                 <div class="button">
-                  <button class="btn" type="submit">Login</button>
+                  <button class="btn" type="submit">{{login}}</button>
                 </div>
-                <p class="outer-link">Don't have an account? <a href="{{baseurl}}/register">Register here </a>
+                <p class="outer-link">Don't have an account? <a href="{{baseurl}}/register">{{registration}} </a>
                 </p>
               </div>
             </form>

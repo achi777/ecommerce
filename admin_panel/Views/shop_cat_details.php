@@ -123,9 +123,9 @@
                                                         <form action="" method="post" enctype="multipart/form-data">
                                                             <@if($details[0]->cat_status == 0):@>
                                                                 <a href="" data-href="{{baseurl}}/admin/shop_cat_details/{{$catID}}/1/active" data-toggle="modal" data-target="#confirm-delete" class="btn btn-success form-control"><i class="fa fa-trash-o"></i> აღდგენა</a>
-                                                                <@else:@>
-                                                                    <a href="" data-href="{{baseurl}}/admin/shop_cat_details/{{$catID}}/0/active" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger form-control"><i class="fa fa-undo"></i> წაშლა</a>
-                                                                    <@endif@>
+                                                            <@else:@>
+                                                                <a href="" data-href="{{baseurl}}/admin/shop_cat_details/{{$catID}}/0/active" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger form-control"><i class="fa fa-undo"></i> წაშლა</a>
+                                                            <@endif@>
                                                         </form>
                                                     </div>
                                                 </div>
